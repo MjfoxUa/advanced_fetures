@@ -3,5 +3,6 @@
     <menu>
         <add id="Mjfox_Education::education" title="Education Module" module="Mjfox_Education" sortOrder="51" resource="Mjfox_Education::education"/>
         <add id="Mjfox_Education::uigrid" title="UiGrid" module="Mjfox_Education" sortOrder="10" action="edu/uigrid" resource="Mjfox_Education::uigrid" parent="Mjfox_Education::education"/>
+        <add id="Mjfox_Education::uiform" title="UiForm" module="Mjfox_Education" sortOrder="20" action="edu/uiform/edit" resource="Mjfox_Education::uiform" parent="Mjfox_Education::education"/>
     </menu>
 </config>

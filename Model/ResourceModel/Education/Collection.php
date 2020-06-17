@@ -15,9 +15,11 @@
 
 namespace Mjfox\Education\Model\ResourceModel\Education;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+class Collection extends AbstractCollection
 {
-    protected $_idFieldName = 'education_id';
+    protected $_idFieldName = 'id';
     protected $_eventPrefix = 'mjfox_education_education_collection';
     protected $_eventObject = 'education_collection';
 

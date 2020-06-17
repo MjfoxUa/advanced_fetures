@@ -13,14 +13,19 @@
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 
-namespace Mjfox\Education\Model\ResourceModel;
+namespace Mjfox\Education\Controller\Adminhtml\Uiform;
 
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Backend\App\Action;
+use Magento\Backend\Model\View\Result\Page;
+use Magento\Framework\Controller\ResultFactory;
 
-class Education extends AbstractDb
+class Edit extends Action
 {
-    protected function _construct()
+    /**
+     * @return Page
+     */
+    public function execute()
     {
-        $this->_init('mjfox_education_education', 'id');
+        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }
 }
