@@ -29,4 +29,11 @@
             <argument name="imageUploader" xsi:type="object">MjfoxImageUploader</argument>
         </arguments>
     </type>
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="imagine_dragon_command" xsi:type="object">Mjfox\Education\Console\Command\TestCommand</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
