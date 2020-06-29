@@ -13,14 +13,27 @@
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 
-namespace Mjfox\Education\Model\ResourceModel;
+namespace Mjfox\Education\Controller\Adminhtml;
 
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Backend\App\Action;
+use Magento\Backend\Model\View\Result\Page;
 
-class Education extends AbstractDb
+abstract class Uiform extends Action
 {
-    protected function _construct()
+    const ADMIN_RESOURCE = 'Mjfox_Education::uiform';
+
+    /**
+     * Init Education Form
+     *
+     * @param Page $resultPage
+     * @return Page
+     */
+    protected function initEducationForm($resultPage)
     {
-        $this->_init('mjfox_education', 'id');
+        $resultPage->setActiveMenu(self::ADMIN_RESOURCE)
+            ->addBreadcrumb(__('Education'), __('Education'))
+            ->addBreadcrumb(__('Uiform'), __('Uiform'));
+
+        return $resultPage;
     }
 }

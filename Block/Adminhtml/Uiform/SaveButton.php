@@ -13,14 +13,22 @@
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 
-namespace Mjfox\Education\Model\ResourceModel;
+namespace Mjfox\Education\Block\Adminhtml\Uiform;
 
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
-class Education extends AbstractDb
+class SaveButton extends GenericButton implements ButtonProviderInterface
 {
-    protected function _construct()
+    public function getButtonData()
     {
-        $this->_init('mjfox_education', 'id');
+        return [
+            'label' => __('Save Data'),
+            'class' => 'save primary',
+            'data_attribute' => [
+                'mage-init' => ['button' => ['event' => 'save']],
+                'form-role' => 'save',
+            ],
+            'sort_order' => 90,
+        ];
     }
 }

@@ -12,7 +12,7 @@
         <argument name="resourceModel" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education</argument>
     </arguments>
 </virtualType>
-    <virtualType name="MjfoxImageUploader" type="Magento\Catalog\Model\ImageUploader">
+    <virtualType name="Mjfox/Education/ImageUploader" type="Magento\Catalog\Model\ImageUploader">
         <arguments>
             <argument name="baseTmpPath" xsi:type="string">education/tmp</argument>
             <argument name="basePath" xsi:type="string">education</argument>

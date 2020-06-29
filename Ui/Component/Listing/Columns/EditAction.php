@@ -12,7 +12,7 @@ class EditAction extends Column
     /**
      * Identify referrer plumrocket
      */
-    const PLUMROCKET_REDIRECT = 'prr';
+    const MJFOX_REDIRECT = 'mjfox';
 
     /**
      * @var UrlInterface
@@ -58,7 +58,7 @@ class EditAction extends Column
                                 $viewUrlPath,
                                 [
                                     'id' => $item[$urlEntityParamName],
-                                    self::PLUMROCKET_REDIRECT => 1
+                                    self::MJFOX_REDIRECT => 1
                                 ]
                             ),
                             'label' => __('Edit'),

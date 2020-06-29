@@ -45,16 +45,16 @@
                 </item>
             </argument>
         </selectionsColumn>
-        <column name="attach_image" class="Plumrocket\AdvancedReviewAndReminder\Ui\Component\Listing\Columns\Attachments" component="Plumrocket_AdvancedReviewAndReminder/js/grid/columns/images" sortOrder="160">
-            <settings>
-                <altField>name</altField>
-                <hasPreview>1</hasPreview>
-                <bodyTmpl>Mjfox_Education/grid/cells/images</bodyTmpl>
-                <label translate="true">Attachments</label>
-                <sortable>true</sortable>
-                <visible>true</visible>
-            </settings>
-        </column>
+<!--        <column name="attach_image" class="Plumrocket\AdvancedReviewAndReminder\Ui\Component\Listing\Columns\Attachments" component="Plumrocket_AdvancedReviewAndReminder/js/grid/columns/images" sortOrder="160">-->
+<!--            <settings>-->
+<!--                <altField>name</altField>-->
+<!--                <hasPreview>1</hasPreview>-->
+<!--                <bodyTmpl>Mjfox_Education/grid/cells/images</bodyTmpl>-->
+<!--                <label translate="true">Attachments</label>-->
+<!--                <sortable>true</sortable>-->
+<!--                <visible>true</visible>-->
+<!--            </settings>-->
+<!--        </column>-->
         <column name="id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -95,7 +95,7 @@
         <actionsColumn name="actions" class="Mjfox\Education\Ui\Component\Listing\Columns\EditAction" sortOrder="500">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="viewUrlPath" xsi:type="string">review/product/edit</item>
+                    <item name="viewUrlPath" xsi:type="string">edu/uiform/edit</item>
                     <item name="urlEntityParamName" xsi:type="string">id</item>
                 </item>
             </argument>
