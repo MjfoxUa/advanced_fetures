@@ -56,7 +56,7 @@ class Save extends Uiform
                 "description" => $postData['description']
         ]);
         $model->save();
-        $this->messageManager->addSuccessMessage(__('You saved the consent location.'));
+        $this->messageManager->addSuccessMessage(__('You saved data.'));
         return $resultRedirect->setPath('*/*/edit', ['location_id' => $model->getId()]);
     }
 }
