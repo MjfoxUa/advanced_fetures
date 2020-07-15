@@ -1,5 +1,5 @@
 <?php
-namespace Mjfox\Education\Controller\Index\CustomerLoggedIn;
+namespace Mjfox\Education\Controller\Index;
 
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
@@ -41,7 +41,7 @@ class Index extends Action
 
         if (!$this->customerSession->isLoggedIn()) {
             $collection = $this->customerCollection->create();
-            $collection->addAttributeToFilter('id', $id);
+            $collection->addAttributeToFilter('entity_id', $id);
             if ($collection->getSize()) {
                 $customer_id = $collection->getFirstItem()->getId();
                 $customer = $this->customerModel->create()->load($customer_id);
