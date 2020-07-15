@@ -15,48 +15,52 @@
 
 namespace Mjfox\Education\Controller\Adminhtml\Uiform;
 
-use Exception;
+
 use Magento\Backend\App\Action\Context;
-use Magento\Backend\App\Action;
-use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Framework\Exception\LocalizedException;
 use Mjfox\Education\Controller\Adminhtml\Uiform;
-use Mjfox\Education\Model\EducationFactory;
+use Mjfox\Education\Model\Education;
 
 class Save extends Uiform
 {
-
     /**
-     * @var EducationFactory
+     * @var Education
      */
-    private $educationFactory;
+    private $education;
 
     public function __construct(
         Context $context,
-        EducationFactory $educationFactory
+        Education $education
     ) {
-        $this->educationFactory = $educationFactory;
         parent::__construct($context);
+        $this->education = $education;
     }
 
     public function execute()
     {
-        /** @var Redirect $resultRedirect */
+        $data = $this->getRequest()->getParams();
         $resultRedirect = $this->resultRedirectFactory->create();
 
-        $postData = $this->getRequest()->getPostValue();
-        $id = $postData['id'];
+        try {
+            if (! empty($data)) {
+                if (isset($data['id'])) {
+                    $this->education->load($data['id']);
+                }
 
-        /** @var Uiform $model */
-        $model = $this->educationFactory->create();
-        $model->load($id);
+                $this->education->setData($data)->save();
+                $gatewayId = $this->education->getId();
+            }
 
-        $model->setData([
-                "name" => $postData['name'],
-                "description" => $postData['description']
-        ]);
-        $model->save();
-        $this->messageManager->addSuccessMessage(__('You saved data.'));
-        return $resultRedirect->setPath('*/*/edit', ['location_id' => $model->getId()]);
+            $this->messageManager->addSuccessMessage(__('Successfully saved'));
+        } catch (\Exception $e) {
+            $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving.'));
+        }
+
+        if (isset($data['back'])) {
+            $resultRedirect->setPath('*/*/edit', ['id' => $gatewayId, '_current' => true]);
+        } else {
+            $resultRedirect->setPath('edu/uigrid/index');
+        }
+
+        return $resultRedirect;
     }
 }

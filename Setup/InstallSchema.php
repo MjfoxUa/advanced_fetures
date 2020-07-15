@@ -49,12 +49,12 @@ class InstallSchema implements InstallSchemaInterface
                     'Status'
                 )
                 ->addColumn(
-                    'attach_image',
-                    Table::TYPE_TEXT,
-                    255,
+                    'image',
                     [
-                        'nullable' => true,
-                        'comment' => 'Attached images',
+                    'header' => __('Image'),
+                    'index' => 'image',
+                    'type' => 'image',
+                    'frame_callback' => [$this, 'callback_image'],
                     ]
                 )
                 ->addColumn(
@@ -63,6 +63,13 @@ class InstallSchema implements InstallSchemaInterface
                     255,
                     ['nullable' => false],
                     'Description'
+                )
+                ->addColumn(
+                    'status',
+                    Table::TYPE_TEXT,
+                    255,
+                    ['nullable' => false],
+                    'Status'
                 )
                 ->setComment('Education Table');
             $installer->getConnection()->createTable($table);

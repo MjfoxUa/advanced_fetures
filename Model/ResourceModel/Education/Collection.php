@@ -16,6 +16,7 @@
 namespace Mjfox\Education\Model\ResourceModel\Education;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Mjfox\Education\Model\ResourceModel\Education;
 
 class Collection extends AbstractCollection
 {
@@ -23,13 +24,11 @@ class Collection extends AbstractCollection
     protected $_eventPrefix = 'mjfox_education_education_collection';
     protected $_eventObject = 'education_collection';
 
-    /**
-     * Define resource model
-     *
-     * @return void
-     */
     protected function _construct()
     {
-        $this->_init('Mjfox\Education\Model\Education', 'Mjfox\Education\Model\ResourceModel\Education');
+        $this->_init(
+            \Mjfox\Education\Model\Education::class,
+            Education::class
+        );
     }
 }

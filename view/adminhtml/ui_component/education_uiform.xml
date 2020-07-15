@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
+
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
@@ -6,33 +7,39 @@
             <item name="deps" xsi:type="string">education_uiform.education_uiform_data_source</item>
         </item>
         <item name="label" xsi:type="string" translate="true">UiForm Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="save" xsi:type="string">Mjfox\Education\Block\Adminhtml\Uiform\SaveButton</item>
+        </item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>
             <item name="namespace" xsi:type="string">education_uiform</item>
         </item>
-        <item name="template" xsi:type="string">templates/form/collapsible</item>
-
-        <item name="buttons" xsi:type="array">
-            <item name="save" xsi:type="string">Mjfox\Education\Block\Adminhtml\Uiform\SaveButton</item>
-        </item>
-
     </argument>
     <dataSource name="education_uiform_data_source">
-        <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Mjfox\Education\Model\DataProvider</argument>
-            <argument name="name" xsi:type="string">education_uiform_data_source</argument>
-            <argument name="primaryFieldName" xsi:type="string">id</argument>
-            <argument name="requestFieldName" xsi:type="string">id</argument>
-        </argument>
-        <settings>
-            <submitUrl path="edu/uiform/save"/>
-        </settings>
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Mjfox\Education\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">education_uiform_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="edu/uiform/save"/>
+                </item>
+            </argument>
+        </argument>
     </dataSource>
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string"/>
+            </item>
+        </argument>
         <field name="name">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -40,6 +47,7 @@
                     <item name="label" xsi:type="string" translate="true">Name</item>
                     <item name="formElement" xsi:type="string">input</item>
                     <item name="source" xsi:type="string">name</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
                     <item name="dataScope" xsi:type="string">name</item>
                     <item name="validation" xsi:type="array">
                         <item name="required-entry" xsi:type="boolean">true</item>
@@ -49,93 +57,90 @@
                 </item>
             </argument>
         </field>
-
-    <field name="status" formElement="select">
-        <settings>
-            <dataType>text</dataType>
-            <label translate="true">Select Status</label>
-            <dataScope>status</dataScope>
-        </settings>
-        <formElements>
-            <select>
+            <field name="status" formElement="select">
                 <settings>
-                    <options>
-                        <option name="1" xsi:type="array">
-                            <item name="value" xsi:type="string">1</item>
-                            <item name="label" xsi:type="string">In Stock</item>
-                        </option>
-                        <option name="2" xsi:type="array">
-                            <item name="value" xsi:type="string">0</item>
-                            <item name="label" xsi:type="string">Out Of Stock</item>
-                        </option>
-                    </options>
-                    <caption translate="true">-- Please Select Status --</caption>
+                    <dataType>text</dataType>
+                    <label translate="true">Select Status</label>
+                    <dataScope>status</dataScope>
                 </settings>
-            </select>
-        </formElements>
-    </field>
-
-    <field name="imageUploader" formElement="imageUploader">
-        <settings>
-            <notice translate="true">Upload Image</notice>
-            <label translate="true">Image Upload</label>
-            <componentType>imageUploader</componentType>
-        </settings>
-        <formElements>
-            <imageUploader>
+                <formElements>
+                    <select>
+                        <settings>
+                            <options>
+                                <option name="1" xsi:type="array">
+                                    <item name="value" xsi:type="string">1</item>
+                                    <item name="label" xsi:type="string">In Stock</item>
+                                </option>
+                                <option name="2" xsi:type="array">
+                                    <item name="value" xsi:type="string">0</item>
+                                    <item name="label" xsi:type="string">Out Of Stock</item>
+                                </option>
+                            </options>
+                            <caption translate="true">-- Please Select Status --</caption>
+                        </settings>
+                    </select>
+                </formElements>
+            </field>
+            <field name="imageUploader" formElement="imageUploader">
                 <settings>
-                    <allowedExtensions>jpg jpeg gif png</allowedExtensions>
-                    <maxFileSize>200000</maxFileSize>
-                    <uploaderConfig>
-                        <param xsi:type="string" name="url">edu/education_image/upload</param>
-                    </uploaderConfig>
+                    <notice translate="true">Upload Image</notice>
+                    <label translate="true">Image Upload</label>
+                    <componentType>imageUploader</componentType>
                 </settings>
-            </imageUploader>
-        </formElements>
-    </field>
-
-    <field name="description" formElement="wysiwyg">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="source" xsi:type="string">block</item>
-            </item>
-        </argument>
-        <settings>
-            <additionalClasses>
-                <class name="admin__field-wide">true</class>
-            </additionalClasses>
-            <validation>
-                <rule name="required-entry" xsi:type="boolean">true</rule>
-            </validation>
-            <label/>
-            <dataScope>description</dataScope>
-        </settings>
-        <formElements>
-            <wysiwyg>
+                <formElements>
+                    <imageUploader>
+                        <settings>
+                            <allowedExtensions>jpg jpeg gif png</allowedExtensions>
+                            <maxFileSize>200000</maxFileSize>
+                            <uploaderConfig>
+                                <param xsi:type="string" name="url">edu/education_image/upload</param>
+                            </uploaderConfig>
+                        </settings>
+                    </imageUploader>
+                </formElements>
+            </field>
+            <field name="description" formElement="wysiwyg">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">block</item>
+                    </item>
+                </argument>
                 <settings>
-                    <wysiwyg>true</wysiwyg>
+                    <additionalClasses>
+                        <class name="admin__field-wide">true</class>
+                    </additionalClasses>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">true</rule>
+                    </validation>
+                    <label/>
+                    <dataScope>description</dataScope>
                 </settings>
-            </wysiwyg>
-        </formElements>
-    </field>
+                <formElements>
+                    <wysiwyg>
+                        <settings>
+                            <wysiwyg>true</wysiwyg>
+                        </settings>
+                    </wysiwyg>
+                </formElements>
+            </field>
 
-    <fieldset name="conditions_fieldset">
-        <argument name="data" xsi:type="array">
-            <item name="config" xsi:type="array">
-                <item name="label" xsi:type="string" translate="true">Conditions</item>
-                <item name="collapsible" xsi:type="boolean">false</item>
-            </item>
-        </argument>
-        <container name="conditions_serialized_container" >
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="sortOrder" xsi:type="number">10</item>
-                </item>
-            </argument>
-            <htmlContent name="html_content">
-                <argument name="block" xsi:type="object">Mjfox\Education\Block\Adminhtml\Uiform\Conditions</argument>
-            </htmlContent>
-        </container>
+            <fieldset name="conditions_fieldset">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Conditions</item>
+                        <item name="collapsible" xsi:type="boolean">false</item>
+                    </item>
+                </argument>
+                <container name="conditions_serialized_container" >
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="sortOrder" xsi:type="number">10</item>
+                        </item>
+                    </argument>
+                    <htmlContent name="html_content">
+                        <argument name="block" xsi:type="object">Mjfox\Education\Block\Adminhtml\Uiform\Conditions</argument>
+                    </htmlContent>
+                </container>
+            </fieldset>
     </fieldset>
-
 </form>

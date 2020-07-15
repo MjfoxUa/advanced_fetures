@@ -1,25 +1,12 @@
 <?xml version="1.0" ?>
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:helloworld:Magento_Widget:etc/widget.xsd">
     <widget class="Mjfox\Education\Block\Widget\Countdown" id="mjfox_education_countdown">
-        <label>Сountdown Test</label>
+        <label>Сountdown</label>
         <description>Сountdown</description>
         <parameters>
             <parameter name="countdown" sort_order="10" visible="true" xsi:type="text">
-                <label>Custom Сountdown Text</label>
-            </parameter>
-            <parameter name="time" xsi:type="select" visible="true" required="true" sort_order="20">
-                <label translate="true">Custom Сountdown Time</label>
-                <options>
-                    <option name="minute_1" value="60">
-                        <label>1 minute</label>
-                    </option>
-                    <option name="minute_2" value="120" selected="true">
-                        <label>2 minute</label>
-                    </option>
-                    <option name="minute_3" value="180">
-                        <label>3 minute</label>
-                    </option>
-                </options>
+                <label>Сountdown end</label>
+                <description>Date format : 1995-12-17T03:24:00</description>
             </parameter>
         </parameters>
     </widget>

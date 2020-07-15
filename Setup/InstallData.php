@@ -61,6 +61,12 @@ class InstallData implements InstallDataInterface
             ]
         );
 
+        $entityTypeId = $eavSetup->getEntityTypeId(\Magento\Catalog\Model\Category::ENTITY);
+        $attributeSetId   = $eavSetup->getDefaultAttributeSetId($entityTypeId);
+        $attributeGroupId = $eavSetup->getAttributeGroupId($entityTypeId, $attributeSetId, 'General Information');
+
+        $eavSetup->addAttributeToGroup($entityTypeId, $attributeSetId, $attributeGroupId, 'mp_new_attribute', '260');
+
         $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
         $eavSetup->addAttribute(
             Product::ENTITY,

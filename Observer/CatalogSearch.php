@@ -15,7 +15,6 @@
 
 namespace Mjfox\Education\Observer;
 
-use Magento\CatalogSearch\Block\Result;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\View\Result\PageFactory;
@@ -43,7 +42,6 @@ class CatalogSearch implements ObserverInterface
 
     public function execute(Observer $observer)
     {
-
        // var_dump($this->queryFactory->get()->getQueryText());
     }
 }

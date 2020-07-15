@@ -2,9 +2,10 @@
 
 namespace Mjfox\Education\Controller\Adminhtml\Education\Image;
 
+use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
 
-class Upload extends \Magento\Backend\App\Action
+class Upload extends Action
 {
     /**
      * Image uploader

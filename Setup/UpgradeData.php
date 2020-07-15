@@ -34,27 +34,27 @@ class UpgradeData implements UpgradeDataInterface
 
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        if (version_compare($context->getVersion(), '1.1.0', '<')) {
-            $cmsBlockData = [
-                'title' => 'Education CMS Block',
-                'identifier' => 'education_cms_block',
-                'is_active' => 1,
-                'stores' => [0]
-            ];
-
-            $this->blockFactory->create()->setData($cmsBlockData)->save();
-
-            $testPage = [
-                'title' => 'Test page title',
-                'identifier' => 'test-page',
-                'stores' => [0],
-                'is_active' => 1,
-                'content_heading' => 'Test page heading',
-                'content' => 'Test page content',
-                'page_layout' => '1column'
-            ];
-
-            $this->pageFactory->create()->setData($testPage)->save();
-        }
+//        if (version_compare($context->getVersion(), '1.1.0', '<')) {
+//            $cmsBlockData = [
+//                'title' => 'Education CMS Block',
+//                'identifier' => 'education_cms_block',
+//                'is_active' => 1,
+//                'stores' => [0]
+//            ];
+//
+//            $this->blockFactory->create()->setData($cmsBlockData)->save();
+//
+//            $testPage = [
+//                'title' => 'Test page title',
+//                'identifier' => 'test-page',
+//                'stores' => [0],
+//                'is_active' => 1,
+//                'content_heading' => 'Test page heading',
+//                'content' => 'Test page content',
+//                'page_layout' => '1column'
+//            ];
+//
+//            $this->pageFactory->create()->setData($testPage)->save();
+//        }
     }
 }

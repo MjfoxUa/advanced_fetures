@@ -35,6 +35,22 @@
             </argument>
         </argument>
     </dataSource>
+    <massaction name="listing_massaction">
+        <action name="delete">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="type" xsi:type="string">delete</item>
+                    <item name="label" xsi:type="string" translate="true">Delete</item>
+                    <item name="url" xsi:type="url" path="*/*/massdelete"/>
+                    <item name="confirm" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">Delete item(s)</item>
+                        <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected item(s)?</item>
+                    </item>
+                </item>
+            </argument>
+        </action>
+    </massaction>
+
     <columns name="spinner_columns">
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
@@ -45,16 +61,19 @@
                 </item>
             </argument>
         </selectionsColumn>
-<!--        <column name="attach_image" class="Plumrocket\AdvancedReviewAndReminder\Ui\Component\Listing\Columns\Attachments" component="Plumrocket_AdvancedReviewAndReminder/js/grid/columns/images" sortOrder="160">-->
-<!--            <settings>-->
-<!--                <altField>name</altField>-->
-<!--                <hasPreview>1</hasPreview>-->
-<!--                <bodyTmpl>Mjfox_Education/grid/cells/images</bodyTmpl>-->
-<!--                <label translate="true">Attachments</label>-->
-<!--                <sortable>true</sortable>-->
-<!--                <visible>true</visible>-->
-<!--            </settings>-->
-<!--        </column>-->
+        <column name="filename" class="Mjfox\Education\Ui\Component\Listing\Columns\Thumbnail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/thumbnail</item>
+                    <!-- <item name="add_field" xsi:type="boolean">true</item> -->
+                    <item name="sortable" xsi:type="boolean">false</item>
+                    <item name="altField" xsi:type="string">name</item>
+                    <item name="has_preview" xsi:type="string">1</item>
+                    <item name="label" xsi:type="string" translate="true">Education Image</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+                </item>
+            </argument>
+        </column>
         <column name="id">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
@@ -78,7 +97,21 @@
                 </item>
             </argument>
         </column>
-        <column name="description">
+        <column name="status">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">text</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                </item>
+            </argument>
+        </column>
+    <column name="description">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>

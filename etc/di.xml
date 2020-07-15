@@ -2,11 +2,11 @@
 <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
     <arguments>
         <argument name="collections" xsi:type="array">
-            <item name="mjfox_education_education_listing_data_source" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education\Collection</item>
+            <item name="mjfox_education_education_listing_data_source" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education\Grid\Collection</item>
         </argument>
     </arguments>
 </type>
-<virtualType name="Mjfox\Education\Model\ResourceModel\Education\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+<virtualType name="Mjfox\Education\Model\ResourceModel\Education\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
     <arguments>
         <argument name="mainTable" xsi:type="string">mjfox_education</argument>
         <argument name="resourceModel" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education</argument>
