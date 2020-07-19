@@ -12,13 +12,6 @@ class Thumbnail extends Column
 
     const ALT_FIELD = 'name';
 
-    private $_getModel;
-    /**
-     * @var string
-     */
-    private $editUrl;
-
-    private $_objectManager = null;
     /**
      * @var Image
      */
@@ -55,14 +48,18 @@ class Thumbnail extends Column
      */
     public function prepareDataSource(array $dataSource)
     {
-        //https://magento2.plumserver.com/dev11/pub/media/education/tmp/test_5.png
+       // var_dump($dataSource);
+      //  exit;
         if (isset($dataSource['data']['items'])) {
             $fieldName = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
-                $filename = 'myimage.png';
-                $item[$fieldName . '_src'] = $this->imageHelper->getBaseUrl().$filename;
-                $item[$fieldName . '_alt'] = $this->getAlt($item) ?: $filename;
-                $item[$fieldName . '_orig_src'] = $this->imageHelper->getBaseUrl().$filename;
+                $filename = 'image.png';
+                //$item[$fieldName . '_src'] = $this->imageHelper->getBaseUrl().$filename;
+                $item[$fieldName . '_src'] = 'https://magento2.plumserver.com/dev11/pub/media//test_2.png';
+                //$item[$fieldName . '_alt'] = $this->getAlt($item) ?: $filename;
+                $item[$fieldName . '_alt'] = 'https://magento2.plumserver.com/dev11/pub/media//test_2.png';
+                //$item[$fieldName . '_orig_src'] = $this->imageHelper->getBaseUrl().$filename;
+                $item[$fieldName . '_orig_src'] = 'https://magento2.plumserver.com/dev11/pub/media//test_2.png';
             }
         }
 

@@ -10,6 +10,7 @@
         <item name="template" xsi:type="string">templates/form/collapsible</item>
         <item name="buttons" xsi:type="array">
             <item name="save" xsi:type="string">Mjfox\Education\Block\Adminhtml\Uiform\SaveButton</item>
+            <item name="delete" xsi:type="string">Mjfox\Education\Block\Adminhtml\Uiform\Delete</item>
         </item>
         <item name="config" xsi:type="array">
             <item name="dataScope" xsi:type="string">data</item>

@@ -44,7 +44,6 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic
         parent::__construct($context, $registry, $formFactory, $data);
     }
 
-
     private function getRuleFactory()
     {
         if ($this->ruleFactory === null) {
@@ -97,9 +96,11 @@ class Conditions extends \Magento\Backend\Block\Widget\Form\Generic
         return parent::_prepareForm();
     }
 
-
-    protected function addTabToForm($model, $fieldsetId = 'conditions_serialized_field', $formName = 'productlabel_form')
-    {
+    protected function addTabToForm(
+        $model,
+        $fieldsetId = 'conditions_serialized_field',
+        $formName = 'productlabel_form'
+    ) {
         if (!$model) {
             $id = $this->getRequest()->getParam('id');
             $model = $this->getRuleFactory()->create();

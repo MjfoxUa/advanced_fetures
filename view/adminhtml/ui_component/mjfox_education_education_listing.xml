@@ -49,8 +49,33 @@
                 </item>
             </argument>
         </action>
+        <action name="status_in_stock">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="type" xsi:type="string">status_in_stock</item>
+                    <item name="label" xsi:type="string" translate="true">In Stock</item>
+                    <item name="url" xsi:type="url" path="*/*/massinstock"/>
+                    <item name="confirm" xsi:type="array">
+                        <item name="title" xsi:type="string" translate="true">In Stock item(s)</item>
+                        <item name="message" xsi:type="string" translate="true">Are you sure you wan't to set status 'In Stock' selected item(s)?</item>
+                    </item>
+                </item>
+            </argument>
+        </action>
+            <action name="status_out_of_stock">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">status_out_of_stock</item>
+                        <item name="label" xsi:type="string" translate="true">Out Of Stock</item>
+                        <item name="url" xsi:type="url" path="*/*/massoutofstock"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Out Of Stock item(s)</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't set status 'Out Of Stock' selected item(s)?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
     </massaction>
-
     <columns name="spinner_columns">
         <selectionsColumn name="ids">
             <argument name="data" xsi:type="array">
@@ -99,14 +124,11 @@
         </column>
         <column name="status">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Mjfox\Education\Model\Config\Source\StatusField</item>
                 <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">select</item>
                     <item name="filter" xsi:type="string">text</item>
-                    <item name="editor" xsi:type="array">
-                        <item name="editorType" xsi:type="string">text</item>
-                        <item name="validation" xsi:type="array">
-                            <item name="required-entry" xsi:type="boolean">true</item>
-                        </item>
-                    </item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
                     <item name="label" xsi:type="string" translate="true">Status</item>
                 </item>
             </argument>
@@ -132,10 +154,6 @@
                     <item name="urlEntityParamName" xsi:type="string">id</item>
                 </item>
             </argument>
-            <settings>
-                <indexField>review_id</indexField>
-                <visible>true</visible>
-            </settings>
         </actionsColumn>
     </columns>
 </listing>

@@ -4,13 +4,14 @@ namespace Mjfox\Education\Controller\Adminhtml\Education\Image;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\Controller\ResultFactory;
+use \Magento\Catalog\Model\ImageUploader;
 
 class Upload extends Action
 {
     /**
      * Image uploader
      *
-     * @var \Mjfox\Education\Model\ImageUploader
+     * @var \Magento\Catalog\Model\ImageUploader
      */
     protected $imageUploader;
 
@@ -24,16 +25,6 @@ class Upload extends Action
     ) {
         parent::__construct($context);
         $this->imageUploader = $imageUploader;
-    }
-
-    /**
-     * Check admin permissions for this controller
-     *
-     * @return boolean
-     */
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Mjfox_Education::Module');
     }
 
     /**
@@ -56,6 +47,7 @@ class Upload extends Action
         } catch (\Exception $e) {
             $result = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
         }
+
         return $this->resultFactory->create(ResultFactory::TYPE_JSON)->setData($result);
     }
 }

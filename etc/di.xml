@@ -1,39 +1,35 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
-<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-    <arguments>
-        <argument name="collections" xsi:type="array">
-            <item name="mjfox_education_education_listing_data_source" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education\Grid\Collection</item>
-        </argument>
-    </arguments>
-</type>
-<virtualType name="Mjfox\Education\Model\ResourceModel\Education\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-    <arguments>
-        <argument name="mainTable" xsi:type="string">mjfox_education</argument>
-        <argument name="resourceModel" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education</argument>
-    </arguments>
-</virtualType>
-    <virtualType name="Mjfox/Education/ImageUploader" type="Magento\Catalog\Model\ImageUploader">
-        <arguments>
-            <argument name="baseTmpPath" xsi:type="string">education/tmp</argument>
-            <argument name="basePath" xsi:type="string">education</argument>
-            <argument name="allowedExtensions" xsi:type="array">
-                <item name="jpg" xsi:type="string">jpg</item>
-                <item name="jpeg" xsi:type="string">jpeg</item>
-                <item name="gif" xsi:type="string">gif</item>
-                <item name="png" xsi:type="string">png</item>
-            </argument>
-        </arguments>
-    </virtualType>
-    <type name="Mjfox\Education\Controller\Adminhtml\Education\Image\Upload">
-        <arguments>
-            <argument name="imageUploader" xsi:type="object">MjfoxImageUploader</argument>
-        </arguments>
-    </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
-        <arguments>
-            <argument name="commands" xsi:type="array">
-                <item name="imagine_dragon_command" xsi:type="object">Mjfox\Education\Console\Command\TestCommand</item>
-            </argument>
-        </arguments>
-    </type>
-</config>
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+     <preference for="Magento\Checkout\Block\Onepage\Success" type="Mjfox\Education\Block\Coupon" />
+     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+            <arguments>
+                <argument name="collections" xsi:type="array">
+                    <item name="mjfox_education_education_listing_data_source" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education\Grid\Collection</item>
+                </argument>
+            </arguments>
+        </type>
+        <virtualType name="Mjfox\Education\Model\ResourceModel\Education\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+            <arguments>
+                <argument name="mainTable" xsi:type="string">mjfox_education</argument>
+                <argument name="resourceModel" xsi:type="string">Mjfox\Education\Model\ResourceModel\Education</argument>
+            </arguments>
+        </virtualType>
+        <virtualType name="Mjfox\Education\Model\Image\ImageUploader" type="Magento\Catalog\Model\ImageUploader">
+            <arguments>
+                <argument name="baseTmpPath" xsi:type="string">education/tmp</argument>
+                <argument name="basePath" xsi:type="string">education</argument>
+                <argument name="allowedExtensions" xsi:type="array">
+                    <item name="jpg" xsi:type="string">jpg</item>
+                    <item name="jpeg" xsi:type="string">jpeg</item>
+                    <item name="gif" xsi:type="string">gif</item>
+                    <item name="png" xsi:type="string">png</item>
+                </argument>
+            </arguments>
+        </virtualType>
+        <type name="Magento\Framework\Console\CommandListInterface">
+            <arguments>
+                <argument name="commands" xsi:type="array">
+                    <item name="imagine_dragon_command" xsi:type="object">Mjfox\Education\Console\Command\TestCommand</item>
+                </argument>
+            </arguments>
+        </type>
+ </config>

@@ -17,7 +17,6 @@ namespace Mjfox\Education\Model\Image;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\Filesystem;
-use Magento\Framework\App\Filesystem\DirectoryList;
 
 class Image
 {
