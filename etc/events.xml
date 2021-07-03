@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="abstract_search_result_load_after">
+        <observer name="layout_render_before" instance="Mjfox\Education\Observer\CatalogSearch" />
+    </event>
+</config>

@@ -1,0 +1,8 @@
+<div data-bind="if: $row().attach_image">
+    <!-- ko foreach: $row().attach_image -->
+    <img if="$index() < 2" class="admin__control-thumbnail" attr="src: $col.getSrc($data), alt: $col.getAlt($data)"/>
+    <!-- /ko -->
+    <!-- ko if: $row().attach_image.length > 2 -->
+    <div><a href="#" data-bind="text: '+ ' + parseInt($row().attach_image.length - 2) + ' ' + $t('Images')"></a></div>
+    <!-- /ko -->
+</div>

@@ -13,22 +13,12 @@
  * @license     http://wiki.plumrocket.net/wiki/EULA  End-user License Agreement
  */
 
-namespace Mjfox\Education\Model\ResourceModel\Education;
+namespace Mjfox\Education\Block\Widget;
 
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Mjfox\Education\Model\ResourceModel\Education;
+use Magento\Framework\View\Element\Template;
+use Magento\Widget\Block\BlockInterface;
 
-class Collection extends AbstractCollection
+class Countdown extends Template implements BlockInterface
 {
-    protected $_idFieldName = 'id';
-    protected $_eventPrefix = 'mjfox_education_education_collection';
-    protected $_eventObject = 'education_collection';
-
-    protected function _construct()
-    {
-        $this->_init(
-            \Mjfox\Education\Model\Education::class,
-            Education::class
-        );
-    }
+    protected $_template = 'widget/countdown.phtml';
 }

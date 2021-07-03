@@ -15,10 +15,12 @@
 
 namespace Mjfox\Education\Model\ResourceModel;
 
-class Education extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
+class Education extends AbstractDb
 {
     protected function _construct()
     {
-        $this->_init('mjfox_education_education', 'education_id');
+        $this->_init('mjfox_education', 'id');
     }
 }

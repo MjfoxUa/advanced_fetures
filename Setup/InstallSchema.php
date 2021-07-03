@@ -2,12 +2,17 @@
 
 namespace Mjfox\Education\Setup;
 
-class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
-{
+use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Ddl\Table;
+use Magento\Framework\Setup\InstallSchemaInterface;
+use Magento\Framework\Setup\ModuleContextInterface;
+use Magento\Framework\Setup\SchemaSetupInterface;
 
+class InstallSchema implements InstallSchemaInterface
+{
     public function install(
-        \Magento\Framework\Setup\SchemaSetupInterface $setup,
-        \Magento\Framework\Setup\ModuleContextInterface $context
+        SchemaSetupInterface $setup,
+        ModuleContextInterface $context
     ) {
         $installer = $setup;
         $installer->startSetup();
@@ -16,8 +21,8 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                 $installer->getTable('mjfox_education')
             )
                 ->addColumn(
-                    'education_id',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                    'id',
+                    Table::TYPE_INTEGER,
                     null,
                     [
                         'identity' => true,
@@ -25,36 +30,46 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                         'primary'  => true,
                         'unsigned' => true,
                     ],
-                    'Test ID'
+                    'ID'
                 )
                 ->addColumn(
                     'name',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                    Table::TYPE_TEXT,
                     255,
-                    ['nullable => false'],
-                    'Test Name'
+                    ['nullable' => false],
+                    'Name'
                 )
-
                 ->addColumn(
                     'status',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                    1,
-                    [],
-                    'Test Status'
+                    Table::TYPE_INTEGER,
+                    255,
+                    [
+                        'nullable'  => false
+                    ],
+                    'Status'
                 )
-
                 ->addColumn(
-                    'created_at',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-                    null,
-                    ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT],
-                    'Created At'
-                )->addColumn(
-                    'updated_at',
-                    \Magento\Framework\DB\Ddl\Table::TYPE_TIMESTAMP,
-                    null,
-                    ['nullable' => false, 'default' => \Magento\Framework\DB\Ddl\Table::TIMESTAMP_INIT_UPDATE],
-                    'Updated At'
+                    'image',
+                    [
+                    'header' => __('Image'),
+                    'index' => 'image',
+                    'type' => 'image',
+                    'frame_callback' => [$this, 'callback_image'],
+                    ]
+                )
+                ->addColumn(
+                    'description',
+                    Table::TYPE_TEXT,
+                    255,
+                    ['nullable' => false],
+                    'Description'
+                )
+                ->addColumn(
+                    'status',
+                    Table::TYPE_TEXT,
+                    255,
+                    ['nullable' => false],
+                    'Status'
                 )
                 ->setComment('Education Table');
             $installer->getConnection()->createTable($table);
@@ -63,11 +78,11 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                 $installer->getTable('mjfox_education'),
                 $setup->getIdxName(
                     $installer->getTable('mjfox_education'),
-                    ['name', 'status'],
-                    \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+                    ['name'],
+                    AdapterInterface::INDEX_TYPE_FULLTEXT
                 ),
-                ['name', 'status'],
-                \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+                ['name'],
+                AdapterInterface::INDEX_TYPE_FULLTEXT
             );
         }
         $installer->endSetup();
